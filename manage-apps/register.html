@@ -7,6 +7,7 @@ title: Sandbox Registration
     <h2>Sandbox Creation Form</h2>
     <p> As a Concur customer, partner or developer, you can create a development sandbox by filling out and submitting this form. NOTE: Please log out of all Concur products before proceeding.</p><br>
     {% include form-error.html %}
+    {% include form-success.html %}
     {% include form-wait.html %}
     <form action="{{ site.data.forms.server }}/register" method="POST" id="sandboxRegistration" class="sky-form" novalidate="novalidate">
       <fieldset>
@@ -202,7 +203,7 @@ title: Sandbox Registration
       }
       $(form).ajaxSubmit({
         beforeSend: function() {
-          $('#status-modal').modal('show');
+        //  $('#status-modal').modal('show');
           $('#sandboxRegistration button[type="submit"]').attr('disabled', true);
         },
         error: function(res) {
@@ -217,29 +218,29 @@ title: Sandbox Registration
           $("#sandboxRegistration").addClass('submited');
           $('#form-success').removeClass('form-success-hidden');
 
-          var verifyLoginPage = 'https://www.concursolutions.com/verify_login.asp?breeze=y';
-          // create a new hidden form
-
-          var hiddenForm = $('<form></form>')
-            .attr("name", "loginCS_hidden")
-            .attr("id", "loginCS_hidden")
-            .attr("style", "display:none")
-            .attr("action", verifyLoginPage)
-            .attr("method", "POST");
-
-            $('<input></input>')
-              .attr("type", "hidden")
-              .attr("name", "userid")
-              .attr("value", data.userid)
-              .appendTo(hiddenForm)
-
-            $('<input></input>')
-              .attr("type", "hidden")
-              .attr("name", "password")
-              .attr("value", data.password)
-              .appendTo(hiddenForm);
-
-            hiddenForm.appendTo('body').submit();
+          // var verifyLoginPage = 'https://www.concursolutions.com/verify_login.asp?breeze=y';
+          // // create a new hidden form
+          //
+          // var hiddenForm = $('<form></form>')
+          //   .attr("name", "loginCS_hidden")
+          //   .attr("id", "loginCS_hidden")
+          //   .attr("style", "display:none")
+          //   .attr("action", verifyLoginPage)
+          //   .attr("method", "POST");
+          //
+          //   $('<input></input>')
+          //     .attr("type", "hidden")
+          //     .attr("name", "userid")
+          //     .attr("value", data.userid)
+          //     .appendTo(hiddenForm)
+          //
+          //   $('<input></input>')
+          //     .attr("type", "hidden")
+          //     .attr("name", "password")
+          //     .attr("value", data.password)
+          //     .appendTo(hiddenForm);
+          //
+          //   hiddenForm.appendTo('body').submit();
         }
       });
     },
