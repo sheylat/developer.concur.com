@@ -1,0 +1,10 @@
+version: '2'
+services:
+  sslterm:
+      image: nginx
+      volumes:
+        - ./_dev/sslterm/devcenter.conf:/etc/nginx/nginx.conf:ro
+        - ./_site:/website:ro
+        - ./_dev/sslterm/certs:/etc/nginx/conf.d:ro
+      ports:
+        - "443:443"
