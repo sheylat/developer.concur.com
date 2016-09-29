@@ -1,0 +1,30 @@
+{
+  "name": "developer.concur.com",
+  "version": "2.0.0",
+  "description": "Concur Developer Center",
+  "main": "build.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node ./build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/concur/developer.concur.com.git"
+  },
+  "keywords": [
+    "Concur",
+    "API"
+  ],
+  "author": "Concur Developer Platform Team",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/concur/developer.concur.com/issues"
+  },
+  "homepage": "https://github.com/concur/developer.concur.com#readme",
+  "dependencies": {
+    "metalsmith": "^2.2.0"
+  }
+}
