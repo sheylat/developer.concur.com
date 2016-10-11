@@ -1,4 +1,0 @@
-
-# Receipts
-
-## See Example Receipts

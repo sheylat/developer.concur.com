@@ -1,0 +1,18 @@
+<p>This is an official git repository for the jVectorMap plug-in for jQuery. Its main purpose is to show interactive vector maps on the web pages.</p>
+<p>You can find maps, documentation, examples and more at <a href="http://jvectormap.com/">the official site</a></p>
+<p>It also includes a converter that could be used to create your own maps for jVectorMap from the data in various GIS formats like Shapefile. The following command could be used to convert USA map from the data available at <a href="http://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/">www.naturalearthdata.com</a>:</p>
+<pre><code>python \
+  path/to/converter.py \
+  path/to/geo-data.shp \
+  path/to/resulting-map.js \
+  --width 900 \
+  --country_name_index 4 \
+  --where &quot;ISO = &#39;USA&#39;&quot; \
+  --codes_file path/to/codes-en.tsv \
+  --insets &#39;[{&quot;codes&quot;: [&quot;US-AK&quot;], &quot;width&quot;: 200, &quot;left&quot;: 10, &quot;top&quot;: 370}, {&quot;codes&quot;: [&quot;US-HI&quot;], &quot;width&quot;: 100, &quot;left&quot;: 220, &quot;top&quot;: 400}]&#39; \
+  --minimal_area 4000000 \
+  --buffer_distance -0.5 \
+  --simplify_tolerance 1000 \
+  --longitude0 -10.15 \
+  --name us
+</code></pre>

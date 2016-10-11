@@ -1,0 +1,270 @@
+<h1 id="booking">Booking</h1>
+<p>The Booking resource represents booking segments in the Concur Travel system. TripLink suppliers use this resource to display a subset of the full booking fields.</p>
+<p>TOC</p>
+<ul>
+<li>Create a new air booking</li>
+<li>Create a new car booking</li>
+<li>Create a new hotel booking</li>
+<li>Create a new rail booking</li>
+<li>Retrieve a booking</li>
+<li>Update an existing booking</li>
+<li>Cancel a booking</li>
+</ul>
+<h2 id="create-a-new-booking">Create a new booking</h2>
+<p>POST /api/travel/booking/v1.0?tripId=12345678</p>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tripId</code></td>
+<td><code>string</code></td>
+<td>The unique identifier for the trip. Supplied in order to add a booking to an existing trip.</td>
+</tr>
+<tr>
+<td><code>userid_type</code></td>
+<td>``</td>
+<td></td>
+</tr>
+<tr>
+<td><code>userid_value</code></td>
+<td>``</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="request">Request</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BookingSource</code></td>
+<td><code>type</code></td>
+<td>Required The supplier&#39;s name.</td>
+</tr>
+<tr>
+<td><code>ItinSourceName</code></td>
+<td><code>type</code></td>
+<td>Required The itinerary source. Format: TravelSupplier</td>
+</tr>
+<tr>
+<td><code>RecordLocator</code></td>
+<td><code>type</code></td>
+<td>Required Record locator for this booking. This is often six alphameric characters but can have other formats depending on the booking source.</td>
+</tr>
+<tr>
+<td><code>DateBookedLocal</code></td>
+<td><code>type</code></td>
+<td>The date the booking was created, in the booking location&#39;s local time. Format: YYYY-MM-DDThh:mm:ss.</td>
+</tr>
+<tr>
+<td><code>FormOfPaymentName</code></td>
+<td><code>type</code></td>
+<td>The name of the form of payment for the booking.</td>
+</tr>
+<tr>
+<td><code>FormOfPaymentType</code></td>
+<td><code>type</code></td>
+<td>The type of the form of payment.</td>
+</tr>
+<tr>
+<td><code>TicketMailingAddress</code></td>
+<td><code>type</code></td>
+<td>The mailing address for the booked ticket, if available.</td>
+</tr>
+<tr>
+<td><code>TicketPickupLocation</code></td>
+<td><code>type</code></td>
+<td>The pickup location for the booked ticket, if available.</td>
+</tr>
+<tr>
+<td><code>TicketPickupNumber</code></td>
+<td><code>type</code></td>
+<td>The confirmation number to pick up the booked ticket, if available.</td>
+</tr>
+<tr>
+<td><code>AirfareQuotes</code></td>
+<td><code>type</code></td>
+<td>List of stored airfare quotes for this booking.</td>
+</tr>
+<tr>
+<td><code>AirlineTickets</code></td>
+<td><code>type</code></td>
+<td>List of Airline Tickets for this booking.</td>
+</tr>
+<tr>
+<td><code>Charges</code></td>
+<td><code>type</code></td>
+<td>List of Charges for this booking.</td>
+</tr>
+<tr>
+<td><code>MiscChargeOrders</code></td>
+<td><code>type</code></td>
+<td>List of Miscellaneous AirCharges for this booking.</td>
+</tr>
+<tr>
+<td><code>Passengers</code></td>
+<td><code>type</code></td>
+<td>The <em>Passengers</em> element contains child element for each booked passenger. The description of each child element can be seen in a subsequent table.</td>
+</tr>
+<tr>
+<td><code>PassPrograms</code></td>
+<td><code>type</code></td>
+<td>List of Pass Programs for this booking.</td>
+</tr>
+<tr>
+<td><code>PhoneNumbers</code></td>
+<td><code>type</code></td>
+<td>List of Phone numbers associated with this booking.</td>
+</tr>
+<tr>
+<td><code>RailPayments</code></td>
+<td><code>type</code></td>
+<td>List of Rail payments associated with rail segments in this booking.</td>
+</tr>
+<tr>
+<td><code>Segments</code></td>
+<td><code>type</code></td>
+<td>List of Segments in this booking. This parent element contains one or more <strong>Air</strong>, <strong>Car</strong>, <strong>Hotel</strong>, <strong>Dining</strong>, <strong>Ride</strong>, <strong>Rail</strong>, <strong>Parking</strong>, or <strong>Event</strong> parent elements for the booking. Refer to [Booking Object Elements][1] for more information about the child elements contained in the booking elements.</td>
+</tr>
+<tr>
+<td><code>WaitListSegments</code></td>
+<td><code>type</code></td>
+<td>The segments that the traveler is waitlisted for this booking.</td>
+</tr>
+<tr>
+<td><code>Warnings</code></td>
+<td><code>type</code></td>
+<td>The warnings associated with the booking.</td>
+</tr>
+<tr>
+<td><code>WebAddresses</code></td>
+<td><code>type</code></td>
+<td>List of web addresses such as emails, pickup urls, etc.. associated with this bookings.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">Response</h3>
+<h2 id="get-a-booking">Get a booking</h2>
+<p>POST /api/travel/booking/v1.0?tripId=12345678</p>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>type</code></td>
+<td>Description.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-request-json-body-">Input (request JSON body)</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>type</code></td>
+<td>Description.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">Response</h3>
+<h2 id="update-an-existing-booking">Update an existing booking</h2>
+<p>POST /api/travel/booking/v1.0?tripId=12345678</p>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>type</code></td>
+<td>Description.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-request-json-body-">Input (request JSON body)</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>type</code></td>
+<td>Description.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">Response</h3>
+<h2 id="cancel-a-booking">Cancel a booking</h2>
+<p>POST /api/travel/booking/v1.0?tripId=12345678</p>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>type</code></td>
+<td>Description.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-request-json-body-">Input (request JSON body)</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>type</code></td>
+<td>Description.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">Response</h3>

@@ -1,0 +1,71 @@
+<form method="get" action="/search.html" id="searchbox_000165422556797149853:qlbg8re_3tu" class="search-form">
+  <div class="navbar navbar-default mega-menu" role="navigation">
+    <div class="container">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="fa fa-bars"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img id="logo-header" src="/img/concur_logo.gif" alt="Logo">
+          Developer Center
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+        <% 
+          let menuClasses = {
+            active: 'active',
+            dropdown: 'dropdown'
+          };
+
+          let isDropdown = R.has('sub');
+
+          R.forEach(topNavItem => { 
+            let topNavItemClasses = [];
+            if(path == topNavItem.url)  // TODO: or if path is any of the subpage URLs
+              topNavItemClasses.push(menuClasses.active);
+            if(isDropdown(topNavItem))
+              topNavItemClasses.push(menuClasses.dropdown);
+        %>
+          <li class="<%= R.join(' ', topNavItemClasses) %>">
+        <% if(!isDropdown(topNavItem)){ %>
+            <a href="<%= topNavItem.url %>"><%= topNavItem.title %></a>
+        <% } else { %>
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><%= topNavItem.title %></a>
+            <ul class="dropdown-menu">
+              <% R.forEach(subNavItem => { %>
+              <li><a href="<%= subNavItem.url %>"><%= subNavItem.title %></a></li>
+              <% }, topNavItem.sub); %>
+            </ul>
+        <% } %>
+          </li>
+        <% }, topnav); %>
+
+        <!-- Search Block -->
+        <li>
+          <i class="search fa fa-search search-btn"></i>
+          <div class="search-open">
+            <div class="input-group animated fadeInDown">
+              <input value="000165422556797149853:qlbg8re_3tu" name="cx" type="hidden"/>
+              <input value="FORID:11" name="cof" type="hidden"/> <!-- FORID values configure ad positions -->
+
+              <input type="text" id="q" class="form-control" name="q" value="" placeholder="Search">
+              <span class="input-group-btn">
+                <button type="submit" class="btn-u">Go</button>
+              </span>
+            </div>
+          </div>
+        </li>
+        <!-- End Search Block -->
+      </ul>
+    </div><!--/navbar-collapse-->
+  </div>
+</div>
+<!-- End Navbar -->
+
+</form>
